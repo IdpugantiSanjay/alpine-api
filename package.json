@@ -1,0 +1,23 @@
+{
+  "name": "alpine-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc && node dist/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "hapi": "^18.1.0",
+    "mongoose": "^5.4.18",
+    "ramda": "^0.26.1"
+  },
+  "devDependencies": {
+    "@types/hapi": "^18.0.1",
+    "@types/mongoose": "^5.3.21",
+    "@types/ramda": "^0.26.1"
+  }
+}
