@@ -1,10 +1,14 @@
 import * as Hapi from 'hapi';
+import { createContainer } from '../services/container.service';
+import { IContainer } from '../models/container.model';
 
 const createContainerRoute: Hapi.ServerRoute = {
   path: '/api/{userId}/containers',
   method: 'POST',
-  handler: function(req: Hapi.Request) {
-    return 'Container Created';
+  options: {
+    handler: function(req: Hapi.Request) {
+      return createContainer(req.params.userId, req.payload as IContainer);
+    }
   }
 };
 
