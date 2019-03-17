@@ -24,7 +24,5 @@ const server = new Hapi.Server({
 });
 server.route(container_route_1.containerRoutes);
 const connectionString = 'mongodb://sanjay:sanjay_11@tyche-cluster1-shard-00-00-uzby1.mongodb.net:27017,tyche-cluster1-shard-00-01-uzby1.mongodb.net:27017,tyche-cluster1-shard-00-02-uzby1.mongodb.net:27017/test?ssl=true&replicaSet=tyche-cluster1-shard-0&authSource=admin&retryWrites=true';
-mongoose_1.default
-    .connect(connectionString, { useNewUrlParser: true })
-    .then(() => console.log('Database Connected'));
-server.start().then(() => console.log(`Server started`));
+mongoose_1.default.connect(connectionString, { useNewUrlParser: true }).then(() => console.log('Database Connected'));
+server.start().then(() => console.log(`Server started on port ${server.info.port}`));

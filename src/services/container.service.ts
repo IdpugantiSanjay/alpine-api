@@ -6,10 +6,9 @@ import * as R from 'ramda';
 
 const { merge } = R;
 
-export function createContainer(userId: string, container: IContainer) {
+function createContainer(userId: string, container: IContainer) {
   return Container.create(merge({ userId, createdBy: userId }, container))
     .then(function(container) {
-      console.log(container);
       return container;
     })
     .catch(function(err) {
@@ -17,6 +16,21 @@ export function createContainer(userId: string, container: IContainer) {
     });
 }
 
-async function getAllUserContainers() {}
+function userContainers(userId: string) {
+  return Container.find({ userId })
+    .then(function(containers: any[]) {
+      return containers;
+    })
+    .catch(function(err) {
+      console.error(err);
+    });
+}
 
 async function deleteContainer() {}
+
+export function ContainerService() {}
+
+ContainerService.createContainer = createContainer;
+ContainerService.userContainers = userContainers;
+
+// module.exports = [UserContainer];

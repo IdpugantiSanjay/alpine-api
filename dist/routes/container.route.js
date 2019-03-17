@@ -6,7 +6,7 @@ const createContainerRoute = {
     method: 'POST',
     options: {
         handler: function (req) {
-            return container_service_1.createContainer(req.params.userId, req.payload);
+            return container_service_1.ContainerService.createContainer(req.params.userId, req.payload);
         }
     }
 };
@@ -14,7 +14,7 @@ const getUserContainers = {
     path: '/api/{userId}/containers',
     method: 'GET',
     handler: function (req) {
-        return 'User Containers';
+        return container_service_1.ContainerService.userContainers(req.params.userId);
     }
 };
 const deleteContainer = {

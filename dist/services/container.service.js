@@ -21,17 +21,26 @@ const { merge } = R;
 function createContainer(userId, container) {
     return container_dbmodel_1.Container.create(merge({ userId, createdBy: userId }, container))
         .then(function (container) {
-        console.log(container);
         return container;
     })
         .catch(function (err) {
         console.error(err);
     });
 }
-exports.createContainer = createContainer;
-function getAllUserContainers() {
-    return __awaiter(this, void 0, void 0, function* () { });
+function userContainers(userId) {
+    return container_dbmodel_1.Container.find({ userId })
+        .then(function (containers) {
+        return containers;
+    })
+        .catch(function (err) {
+        console.error(err);
+    });
 }
 function deleteContainer() {
     return __awaiter(this, void 0, void 0, function* () { });
 }
+function ContainerService() { }
+exports.ContainerService = ContainerService;
+ContainerService.createContainer = createContainer;
+ContainerService.userContainers = userContainers;
+// module.exports = [UserContainer];
