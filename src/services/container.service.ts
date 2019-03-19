@@ -1,7 +1,5 @@
 import { IContainer } from '../models/container.model';
-
 import { Container } from '../mongodb/models/container.dbmodel';
-
 import * as R from 'ramda';
 
 const { merge } = R;
@@ -26,11 +24,20 @@ function userContainers(userId: string) {
     });
 }
 
-async function deleteContainer() {}
+function deleteContainer(containerId: string) {
+  return Container.findByIdAndDelete(containerId)
+    .then(function(response) {
+      return response;
+    })
+    .catch(function(err) {
+      console.error(JSON.stringify(err));
+    });
+}
 
 export function ContainerService() {}
 
 ContainerService.createContainer = createContainer;
 ContainerService.userContainers = userContainers;
+ContainerService.deleteContainer = deleteContainer;
 
 // module.exports = [UserContainer];

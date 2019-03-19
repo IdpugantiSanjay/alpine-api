@@ -21,7 +21,7 @@ const deleteContainer = {
     path: '/api/{userId}/containers/{containerId}',
     method: 'DELETE',
     handler: function (req) {
-        return 'Deleted Container';
+        return container_service_1.ContainerService.deleteContainer(req.payload);
     }
 };
 exports.containerRoutes = [createContainerRoute, getUserContainers, deleteContainer];

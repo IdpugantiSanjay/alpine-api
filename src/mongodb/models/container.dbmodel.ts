@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import { ObjectID, ObjectId } from 'bson';
 
 const containerSchema = new mongoose.Schema({
   name: { type: String, required: true },

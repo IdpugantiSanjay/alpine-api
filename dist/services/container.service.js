@@ -1,12 +1,4 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
@@ -36,11 +28,18 @@ function userContainers(userId) {
         console.error(err);
     });
 }
-function deleteContainer() {
-    return __awaiter(this, void 0, void 0, function* () { });
+function deleteContainer(container) {
+    return container_dbmodel_1.Container.deleteOne(container)
+        .then(function (response) {
+        return response;
+    })
+        .catch(function (err) {
+        console.error(JSON.stringify(err));
+    });
 }
 function ContainerService() { }
 exports.ContainerService = ContainerService;
 ContainerService.createContainer = createContainer;
 ContainerService.userContainers = userContainers;
+ContainerService.deleteContainer = deleteContainer;
 // module.exports = [UserContainer];

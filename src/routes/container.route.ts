@@ -7,7 +7,10 @@ const createContainerRoute: Hapi.ServerRoute = {
   method: 'POST',
   options: {
     handler: function(req: Hapi.Request) {
-      return ContainerService.createContainer(req.params.userId, req.payload as IContainer);
+      return ContainerService.createContainer(
+        req.params.userId,
+        req.payload as IContainer
+      );
     }
   }
 };
@@ -24,7 +27,7 @@ const deleteContainer: Hapi.ServerRoute = {
   path: '/api/{userId}/containers/{containerId}',
   method: 'DELETE',
   handler: function(req: Hapi.Request) {
-    return 'Deleted Container';
+    return ContainerService.deleteContainer(req.params.containerId as string);
   }
 };
 
